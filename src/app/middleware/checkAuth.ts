@@ -78,6 +78,11 @@ export const checkAuth =
               "Forbidden access! You don't have permission to access this resource",
             );
           }
+          req.user = {
+            userId: user.id,
+            role: user.role,
+            email: user.email,
+          };
         } else {
           throw new AppError(status.UNAUTHORIZED, "Invalid session");
         }
